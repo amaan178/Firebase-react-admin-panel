@@ -2,7 +2,7 @@ export const userColumns = [
   { field: "id", headerName: "ID", width: 70 },
   {
     field: "user",
-    headerName: "User",
+    headerName: "Profile Image & User",
     width: 200,
     renderCell: (params) => {
       return (
@@ -27,7 +27,7 @@ export const userColumns = [
   {
     field: "address",
     headerName: "Address",
-    width: 200,
+    width: 150,
   },
   {
     field: "country",
