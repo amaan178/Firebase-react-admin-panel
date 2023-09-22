@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
-// import {AuthContext} from "../../context/AuthContext"
+import {AuthContext} from "../../context/AuthContext"
 import {
   TextInput,
   PasswordInput,
@@ -19,18 +19,18 @@ const Login = () => {
 
   const navitage = useNavigate()
 
-  // const {dispatch} = useContext(AuthContext)
+  const {dispatch} = useContext(AuthContext)
 
   const handleLogin = (e) => {
     e.preventDefault();
-    console.log("in handle login");
+    // console.log("in handle login");
 
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
-        // dispatch({type:"LOGIN", payload:user})
+        // console.log(user);
+        dispatch({type:"LOGIN", payload:user})
         navitage("/")
       })
       .catch((error) => {
