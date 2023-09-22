@@ -32,6 +32,15 @@ const Datatable = () => {
     fetchData();
   }, []);
 
+  const handleDelete = async (id) => {
+    try {
+      await deleteDoc(doc(db, "users", id));
+      setData(data.filter((item) => item.id !== id));
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   const actionColumn = [
     {
       field: "action",
@@ -45,6 +54,7 @@ const Datatable = () => {
             </Link>
             <div
               className="deleteButton"
+              onClick={() => handleDelete(params.row.id)}
             >
               Delete
             </div>
